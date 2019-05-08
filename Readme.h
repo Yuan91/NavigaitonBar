@@ -63,8 +63,21 @@
  
  当隐藏导航时,不管translucent 如何设置,对于第一个子视图是scrollView的ViewController系统仍会调整它的偏移量
  
- 2.哪些属性会影响translucent
+ 2.translucent 与 UINavigationBar.backgroundImage 的相关影响
+ translucent 默认是YES
+ ①当未设置translucent 时,它的值受backgroundImage图片像素点alpha值的影响
+ 使用[setBackgroundImage:forBarMetrics:] 设置背景图
+如果图片中有像素点小于1,系统会推断translucent 为YES
+当所有像素点alpha值为1的时候,系统会推断translucent为NO.
+
+ ②系统也会根据translucent的值,也修改backgroundImage的透明度
+当translucent为YES时,设置了一个完全不透明的图片,系统会自动修正这个图片并为它添加一个透明度，用于模拟 translucent 效果。
+ 当translucent为NO时,设置了一个带有透明效果的图片,系统会在这个带有透明效果的图片背后，添加一个不透明的纯色图片用于整体效果的合成.
+ 这个纯色图片的颜色取决于 barStyle 属性，当属性为 UIBarStyleBlack 时为黑色，当属性为 UIBarStyleDefault 时为白色，如果我们设置了 barTintColor，则以设置的颜色为基准。
  
+ 参考链接:
+ https://www.jianshu.com/p/c8ffb2bdda91
+ https://tech.meituan.com/2018/10/25/navigation-transition-solution-and-best-practice-in-meituan.html
  
  */
 
