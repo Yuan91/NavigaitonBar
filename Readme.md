@@ -2,9 +2,13 @@
  # iOS 导航栏属性研究
 
  ## 影响导航栏布局的属性
+
  `translucent`
+
  `edgesForExtendedLayout`
+
  `extendedLayoutIncluedsOpaqueBars`
+
  `automaticallyAdjustScrollViewInsets` | `contentInsetAdjustmentBehavior`
  
  ## 对于各个属性的解读
